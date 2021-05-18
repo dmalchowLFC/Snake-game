@@ -1,0 +1,27 @@
+/* #gameplayScreen {
+    background-color: black;
+    border: 5px solid green;
+    height: 95vh;
+    width: 95vw;
+}
+
+#apple {
+    height: 40px;
+    width: 40px;
+}
+
+#snakeBody {
+    background-color: greenyellow;
+    width: 75px;
+    height: 25px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#snakeHead {
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+    background-color: green;
+    width: 10px;
+    height: 10px;
+} */
