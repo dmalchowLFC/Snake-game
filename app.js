@@ -1,4 +1,4 @@
-const frameRate = 1000 / 30;
+const frameRate = 75;
 
 let canvas;
 let canvasContext;
@@ -13,7 +13,7 @@ let snake = {
         { x: 500, y: 710 },
         { x: 500, y: 720 },
     ],
-    speed: 5,
+    speed: 10,
     direction: "Up",
     width: 10,
     height: 10,
@@ -68,11 +68,12 @@ function drawApple() {
 function drawSnake() {
     const snakeCopy = snake.body.map(snakePart => Object.assign({}, snakePart));
 
+
     canvasContext.fillStyle = "green";
     canvasContext.fillRect(snake.body[0].x, snake.body[0].y, snake.width, snake.height)
-    canvasContext.fillStyle = "red";
+    canvasContext.fillStyle = "green";
     canvasContext.fillRect(snake.body[1].x, snake.body[1].y, snake.width, snake.height)
-    canvasContext.fillStyle = "blue";
+    canvasContext.fillStyle = "green";
     canvasContext.fillRect(snake.body[2].x, snake.body[2].y, snake.width, snake.height)
 
     if (snake.direction === "Up") {
@@ -88,7 +89,7 @@ function drawSnake() {
         snake.body[0].x -= snake.speed;
     }
 
-    for (var i = 1; i < snake.body.length; i++) {
+    for (let i = 1; i < snake.body.length; i++) {
         snake.body[i] = snakeCopy[i - 1];
     };
 
