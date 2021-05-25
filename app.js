@@ -11,20 +11,13 @@ let frameRate = 75;
 let score = 0;
 let level = 1;
 let pause = 0;
-
 let appleX;
 let appleY;
-
-
-
-
-
 
 window.onload = () => {
     findAppleCoordinates();
     intervalId = setInterval(drawEverything, frameRate);
 }
-
 
 
 function drawEverything() {
@@ -167,10 +160,9 @@ function handleCollision() {
 }
 
 
-function gameOver() {
-    console.log("Game Over")
+function gameOver(modal) {
+    alert("Game Over");
 }
-
 
 
 //Number stuff
