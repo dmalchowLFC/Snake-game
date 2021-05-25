@@ -6,6 +6,7 @@ const levelDisplay = document.getElementById("level");
 
 document.addEventListener("keydown", handleSnakeMovement)
 
+let intervalId;
 let frameRate = 75;
 let score = 0;
 let level = 1;
@@ -21,7 +22,7 @@ let appleY;
 
 window.onload = () => {
     findAppleCoordinates();
-    setInterval(drawEverything, frameRate);
+    intervalId = setInterval(drawEverything, frameRate);
 }
 
 
@@ -70,9 +71,9 @@ function findAppleY(min, max) {
 
 
 function drawApple() {
-    canvasContext.fillStyle = "red";
-    canvasContext.fillRect(appleX, appleY, 10, 10)
-}
+    canvasContext.drawImage(document.getElementById("appleImg"), appleX, appleY, 10, 10);
+};
+
 
 // Snake Stuff
 
@@ -175,7 +176,7 @@ function gameOver() {
 //Number stuff
 function updateScore() {
     score += 10;
-    if (score % 20 === 0) {
+    if (score % 50 === 0) {
         updateLevel();
     }
     return score
@@ -184,8 +185,10 @@ function updateScore() {
 
 function updateLevel() {
     level += 1;
-    frameRate -= 25;
+    frameRate -= 5;
+    clearInterval(intervalId);
+    intervalId = setInterval(drawEverything, frameRate)
     console.log(level);
     console.log(frameRate)
-    return level
+    return level, frameRate
 };
