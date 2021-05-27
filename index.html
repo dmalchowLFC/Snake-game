@@ -10,19 +10,30 @@
 </head>
 
 <div>
-    <p width="800">
-        <span id="scoreboard">Score: 0</span><span id="level">Level: 1</span>
-    </p>
-    <canvas id="gameplayScreen" width="800px" height="600px">
+    <div id="numbers">
+        <div style="display: inline-block; width: 200px;" id="scoreboard">Score: 0</div>
+        <div style="display: inline-block; width: 200px;" id="level">Level: 1</div>
+    </div>
+    <canvas id="gameplayScreen" width="600px" height="400px">
     </canvas>
-    <div>
-        <span id="instructions">Use the arrow keys to move snake</span>
+    <div class="instructions" id="in1">
+        Manuever the snake with the arrow keys to eat the fruit!
+    </div>
+    <div class="instructions" id="in2">
+        Don't let the snake touch the edges of the board or itself!
+    </div>
+    <div class="instructions" id="in3">
+        As the levels go up, the snake moves faster!
+    </div>
+    <div class="instructions" id="in4">
+        Use spacebar to Pause the game
     </div>
 
-    <img id="appleImg" width="10" height="10" src="apple.png">
+
 
     <script src="app.js"></script>
 </div>
 <div class="active" id="overlay"></div>
+<img id="appleImg" width="10" height="10" src="apple.png">
 
 </html>

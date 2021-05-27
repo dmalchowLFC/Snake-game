@@ -3,16 +3,25 @@ const canvasContext = canvas.getContext("2d");
 const scoreboard = document.getElementById("scoreboard");
 const levelDisplay = document.getElementById("level");
 
-
-document.addEventListener("keydown", handleSnakeMovement)
-
 let intervalId;
 let frameRate = 75;
 let score = 0;
 let level = 1;
-let pause = 0;
 let appleX;
 let appleY;
+let snake = {
+    body: [
+        { x: (canvas.width / 2), y: canvas.height - 30 },
+        { x: (canvas.width / 2), y: canvas.height - 20 },
+        { x: (canvas.width / 2), y: canvas.height - 10 },
+    ],
+    speed: 10,
+    direction: "Up",
+    width: 10,
+    height: 10,
+}
+
+document.addEventListener("keydown", handleSnakeMovement);
 
 window.onload = () => {
     findAppleCoordinates();
@@ -35,10 +44,10 @@ function drawEverything() {
     if (getDistance(appleX, appleY, snake.body[0].x, snake.body[0].y) < snake.width) {
         handleCollision();
     }
-    if (snake.body[0].x <= 0 || snake.body[0].x >= canvas.width) {
+    if (snake.body[0].x < 0 || snake.body[0].x >= canvas.width) {
         gameOver();
     }
-    if (snake.body[0].y <= 0 || snake.body[0].y >= canvas.height) {
+    if (snake.body[0].y < 0 || snake.body[0].y >= canvas.height) {
         gameOver();
     }
 
@@ -68,21 +77,8 @@ function drawApple() {
 };
 
 
+
 // Snake Stuff
-
-let snake = {
-    body: [
-        { x: (canvas.width / 2), y: canvas.height - 30 },
-        { x: (canvas.width / 2), y: canvas.height - 20 },
-        { x: (canvas.width / 2), y: canvas.height - 10 },
-    ],
-    speed: 10,
-    direction: "Up",
-    width: 10,
-    height: 10,
-}
-
-
 function drawSnake() {
     const snakeCopy = snake.body.map(snakePart => Object.assign({}, snakePart));
 
@@ -109,6 +105,10 @@ function drawSnake() {
 
 
 function handleSnakeMovement(e) {
+    if (e.keyCode === 32) {
+        pauseGame();
+    };
+
     if (snake.direction === "Up") {
         if (e.code === "ArrowLeft") {
             snake.direction = "Left"
@@ -142,6 +142,7 @@ function handleSnakeMovement(e) {
         };
     }
 
+
 }
 
 // Distance Stuff
@@ -160,8 +161,15 @@ function handleCollision() {
 }
 
 
-function gameOver(modal) {
-    alert("Game Over");
+// Game functions
+function pauseGame() {
+    alert("Game Paused")
+}
+
+
+function gameOver() {
+    window.location.reload();
+    alert("Oh no! Try again!");
 }
 
 
